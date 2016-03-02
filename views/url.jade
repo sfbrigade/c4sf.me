@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  .page-header
+    if !create
+      h3 Edit URL
+    else
+      h3 New URL
+      
+  form.form-horizontal(action=postUrl, method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='slug') Shortname
+      .col-sm-7
+        input.form-control(type='text', name='slug', id='slug', value='#{url.slug}')
+    .form-group
+      label.col-sm-3.control-label(for='url') Full Url
+      .col-sm-7
+        input.form-control(type='text', name='url', id='url', value='#{url.url}')
+    .form-group
+      label.col-sm-3.control-label(for='description') Brief Description
+      .col-sm-7
+        input.form-control(type='text', name='description', id='description', value='#{url.description}')
+    .form-group
+      label.col-sm-3.control-label(for='gender') Private URL?
+      .col-sm-4
+        label.radio.col-sm-4
+          input(type='checkbox', checked=url.private, name='private', value='', data-toggle='checkbox')
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn.btn-primary(type='submit')
+          i.fa.fa-pencil
+          if create
+            | Save Url
+          else
+            | Update Url
+
+  if !create
+    .page-header
+      h3 Delete URL
+
+    form.form-horizontal(action='/admin/edit/#{url.slug}/delete', method='POST')
+      .form-group
+        input(type='hidden', name='_csrf', value=_csrf)
+        .col-sm-offset-3.col-sm-4
+          button.btn.btn-danger(type='submit')
+            i.fa.fa-trash
+            | Delete Url

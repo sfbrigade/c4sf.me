@@ -6,8 +6,8 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='csrf-token', content=_csrf)
     title #{title} - Hackathon Starter
-    link(rel='shortcut icon', href='/favicon.png')
-    link(rel='stylesheet', href='/css/main.css')
+    link(rel='shortcut icon', href='/public/favicon.png')
+    link(rel='stylesheet', href='/public/css/main.css')
   body
     include partials/header
 
@@ -17,9 +17,10 @@ html
 
     include partials/footer
 
-    script(src='/js/lib/jquery-2.2.0.min.js')
-    script(src='/js/lib/bootstrap.min.js')
-    script(src='/js/main.js')
+    script(src='/public/js/lib/jquery-2.2.0.min.js')
+    script(src='/public/js/lib/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.9/clipboard.min.js')
+    script(src='/public/js/main.js')
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.
