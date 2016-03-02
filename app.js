@@ -155,7 +155,7 @@ app.post('/admin/edit/:slug', passportConfig.isAuthenticated, urlController.post
 app.post('/admin/edit/:slug/delete', passportConfig.isAuthenticated, urlController.postDeleteUrl)
 app.post('/admin/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile)
 app.post('/admin/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount)
-app.get('/admin/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink)
+app.post('/admin/users', passportConfig.isAuthenticated, userController.updateUserAdmins)
 
 app.get('/admin/auth/github', passport.authenticate('github'))
 app.get('/admin/auth/github/callback', passport.authenticate('github', { failureRedirect: '/admin/' }), function (req, res) {

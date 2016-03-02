@@ -15,15 +15,6 @@ block content
       .col-sm-7
         input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
     .form-group
-      label.col-sm-3.control-label(for='gender') Gender
-      .col-sm-4
-        label.radio.col-sm-4
-          input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
-          span Male
-        label.radio.col-sm-4
-          input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
-          span Female
-    .form-group
       label.col-sm-3.control-label(for='location') Location
       .col-sm-7
         input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
@@ -41,7 +32,7 @@ block content
           i.fa.fa-pencil
           | Update Profile
 
-  
+    
   .page-header
     h3 Delete Account
 
@@ -53,3 +44,36 @@ block content
         button.btn.btn-danger(type='submit')
           i.fa.fa-trash
           | Delete my account
+          
+                    
+  if users
+    .page-header
+      h3 Admin Users
+    
+    form.form-horizontal(action='/admin/users', method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      table.table
+        thead 
+          tr
+            th avatar
+            th username
+            th name
+            th location
+            th admin
+        tbody
+          each thisuser in users
+            tr
+              td
+                img(src="#{thisuser.gravatar()}", width="50")
+              td=thisuser.username
+              td=thisuser.profile.name
+              td=thisuser.profile.location
+              td
+                input(type="checkbox", checked=thisuser.admin, id="user-#{thisuser.username}", name="admins", value="#{thisuser.username}", disabled=(thisuser.username===user.username))
+        
+      .form-group
+        .col-sm-offset-3.col-sm-4
+        
+          button.btn.btn.btn-primary(type='submit')
+            i.fa.fa-pencil
+            | Update Admin List
