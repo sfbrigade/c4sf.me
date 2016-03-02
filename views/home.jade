@@ -14,8 +14,8 @@ block content
             th slug
             th description
             th author
-            th private
             if user && user.admin
+              th show
               th edit
         tbody
           each url, index in urls
@@ -29,7 +29,10 @@ block content
               td=url.slug
               td=url.description
               td=url.author
-              td=url.private
               if user && user.admin
-                th 
-                  a(href="/admin/edit/#{url.slug}") Edit
+                if url.show
+                  td public
+                else
+                  td private
+                td 
+                  a.strong(href="/admin/edit/#{url.slug}") Edit

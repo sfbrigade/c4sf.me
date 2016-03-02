@@ -6,11 +6,12 @@ var Url = require('../models/Urls')
 
 
 exports.index = function (req, res) {
-  var searchQuery = {private: false}
+  var searchQuery = {show: true}
   if (res.locals.user && res.locals.user.admin) {
     console.log('THIS IS AN ADMIN')
     searchQuery = {}
   }
+  console.log(searchQuery)
   Url.find(searchQuery, function (err, results) {
     console.log(results)
     console.log('URL', req.params.slug)

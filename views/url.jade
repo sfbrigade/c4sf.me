@@ -22,10 +22,11 @@ block content
       .col-sm-7
         input.form-control(type='text', name='description', id='description', value='#{url.description}')
     .form-group
-      label.col-sm-3.control-label(for='gender') Private URL?
-      .col-sm-4
-        label.radio.col-sm-4
-          input(type='checkbox', checked=url.private, name='private', value='', data-toggle='checkbox')
+      label.col-sm-3.control-label(for='gender') Show URL?
+      .col-sm-7
+        label.radio.col-sm-12
+          input(type='checkbox', checked=url.show, name='show', value='true', data-toggle='checkbox')
+          em &nbsp;Show URL on public admin page
     .form-group
       .col-sm-offset-3.col-sm-4
         button.btn.btn.btn-primary(type='submit')

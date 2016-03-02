@@ -7,7 +7,7 @@ var urlSchema = new mongoose.Schema({
   url: String,
   description: String,
   author: String,
-  private: Boolean
+  show: Boolean
 }, { timestamps: true })
 
 var Url = mongoose.model('Url', urlSchema)

@@ -26,7 +26,7 @@ module.exports = {
           slug:'',
           description:'',
           url:'',
-          private:true
+          show:true
         },
         title: 'URL',
         locals:res.locals,
@@ -52,7 +52,7 @@ module.exports = {
     var url = req.body.url
     var description = req.body.description
     var author = res.locals.user.username
-    var private = req.body.private
+    var show = req.body.show === 'true'
     Url.find({slug:slug}, function(err, results){
       if (err) throw err
       if(results.length){
@@ -65,7 +65,7 @@ module.exports = {
       newUrl.url = url
       newUrl.description = description
       newUrl.author = author
-      newUrl.private = private
+      newUrl.show = show
       newUrl.save(function(err, results){
         if(err) throw err
         req.flash('success', {msg:'Slug: '+slug+' created successfully.'})
@@ -89,7 +89,7 @@ module.exports = {
     var url = req.body.url
     var description = req.body.description
     var author = res.locals.user.username
-    var private = req.body.private
+    var show = req.body.show === 'true'
     Url.find({slug:oldSlug}, function(err, results){
       if (err) throw err
       var newUrl
@@ -102,7 +102,7 @@ module.exports = {
       newUrl.url = url
       newUrl.description = description
       newUrl.author = author
-      newUrl.private = private
+      newUrl.show = show
       newUrl.save(function(err, results){
         if(err) throw err
         req.flash('success', {msg:'Slug: '+newSlug+' updated successfully.'})
