@@ -91,6 +91,9 @@ exports.updateUserAdmins = function(req, res, next){
           } else{
             user.admin = true
           }
+          if(thisUsername === res.locals.user.username){
+            user.admin = true
+          }
           user.save(function(err, results){
             if(err) return reject(err)
             resolve()
