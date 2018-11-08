@@ -34,7 +34,7 @@ block content
 
     
   .page-header
-    h3 Delete Account
+    h3#delete-account Delete Account
 
   form.form-horizontal(action='/account/delete', method='POST')
     .form-group
@@ -48,7 +48,7 @@ block content
                     
   if users
     .page-header
-      h3 Admin Users
+      h3#admin-users Admin Users
     
     form.form-horizontal(action='/admin/users', method='POST')
       input(type='hidden', name='_csrf', value=_csrf)
