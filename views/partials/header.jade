@@ -13,7 +13,9 @@
       ul.nav.navbar-nav
         if user && user.admin
           li(class=(title == 'edit') ? 'active' : undefined)
-            a(href='/admin/edit') Add new Short URL
+            a(href='/admin/edit')
+              i.fa.fa-plus
+              | Add new Short URL
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)
