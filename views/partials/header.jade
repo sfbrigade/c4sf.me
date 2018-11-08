@@ -16,6 +16,14 @@
             a(href='/admin/edit')
               i.fa.fa-plus
               | Add new Short URL
+        li
+          a(href='https://github.com/sfbrigade/c4sf.me')
+            i.fa.fa-github
+            | Source Code
+        li
+          a(href='https://github.com/sfbrigade/c4sf.me/issues/new')
+            i.fa.fa-bug
+            | Report Bug
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)
