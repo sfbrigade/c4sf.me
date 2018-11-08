@@ -8,11 +8,7 @@
         span.icon-bar
       a.navbar-brand(href='/admin')
         i.fa.fa-cube
-        | C4Brigade
-    ul.nav.navbar-nav
-      li
-        a(href="#{locals.host}")
-          =locals.host
+        | c4sf.me
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         if user && user.admin
@@ -34,6 +30,8 @@
             ul.dropdown-menu
               li
                 a(href='/admin/account') My Account
+              li
+                a(href='/admin/account#admin-users') Admin Users
               li.divider
               li
                 a(href='/admin/logout') Logout
