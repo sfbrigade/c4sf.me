@@ -40,8 +40,9 @@
             ul.dropdown-menu
               li
                 a(href='/admin/account') My Account
-              li
-                a(href='/admin/account#admin-users') Admin Users
+              if user && user.admin
+                li
+                  a(href='/admin/account#admin-users') Admin Users
               li.divider
               li
                 a(href='/admin/logout') Logout
