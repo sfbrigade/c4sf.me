@@ -29,7 +29,7 @@ block content
     .form-group
       .col-sm-offset-3.col-sm-4
         button.btn.btn.btn-primary(type='submit')
-          i.fa.fa-pencil
+          i.fa.fa-save
           | Update Profile
 
     
@@ -47,10 +47,15 @@ block content
           
                     
   if users
-    .page-header
-      h3#admin-users Admin Users
     
     form.form-horizontal(action='/admin/users', method='POST')
+      
+      .page-header
+        button.btn.btn.btn-primary.pull-right(type='submit')
+            i.fa.fa-save
+            | Update Admins
+        h3#admin-users Admin Users
+    
       input(type='hidden', name='_csrf', value=_csrf)
       table.table
         thead 
@@ -72,8 +77,8 @@ block content
                 input(type="checkbox", checked=thisuser.admin, id="user-#{thisuser.username}", name="admins", value="#{thisuser.username}", disabled=(thisuser.username===user.username))
         
       .form-group
-        .col-sm-offset-3.col-sm-4
+        .col-sm-12
         
-          button.btn.btn.btn-primary(type='submit')
-            i.fa.fa-pencil
-            | Update Admin List
+          button.btn.btn.btn-primary.pull-right(type='submit')
+            i.fa.fa-save
+            | Update Admins
