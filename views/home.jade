@@ -3,35 +3,33 @@ extends layout
 block content
   h1 Brigade URL Shortener
   hr
-  .row
-    .col-sm-12
-      table.table
-        thead
-          tr
-            th shortlink
-            th full url
-            th slug
-            th description
-            th author
-            if user && user.admin
-              th show
-              th edit
-        tbody
-          each url, index in urls
-            tr
-              td.form-group
-                .input-group
-                  input.form-control(type=text, id="copy-#{index}", value="#{locals.host}/#{url.slug}")
-                  span.input-group-addon.btn-copy(data-index="#{index}")
-                    i.fa.fa-copy
-              td=url.url
-              td=url.slug
-              td=url.description
-              td=url.author
-              if user && user.admin
-                if url.show
-                  td public
-                else
-                  td private
-                td 
-                  a.strong(href="/admin/edit/#{url.slug}") Edit
+  table.table
+    thead
+      tr
+        th shortlink
+        th full url
+        th slug
+        th description
+        th author
+        if user && user.admin
+          th show
+          th edit
+    tbody
+      each url, index in urls
+        tr
+          td.form-group
+            .input-group
+              input.form-control(type=text, id="copy-#{index}", value="#{locals.host}/#{url.slug}")
+              span.input-group-addon.btn-copy(data-index="#{index}")
+                i.fa.fa-copy
+          td=url.url
+          td=url.slug
+          td=url.description
+          td=url.author
+          if user && user.admin
+            if url.show
+              td public
+            else
+              td private
+            td 
+              a.strong(href="/admin/edit/#{url.slug}") Edit
